@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { Logo, Sunburst, Sparkle, Flower, Squiggle, ArrowRight, Peace, ScribbleUnderline, Heart, QuoteIcon, AbstractShape, ScribbleLoop, Smiley, Sun, Star, Spiral } from './components/Icons';
 import { Button, BigHeading, Sticker, Badge, Tape, Polaroid, PhotoGridItem, QuoteCard, StickyNote } from './components/UI';
 import { KindnessGenerator } from './components/KindnessGenerator';
+import { FluidBackground } from './components/FluidBackground';
 
 // Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -357,56 +358,66 @@ const ScrollyTellingSection = () => {
     }, { scope: wrapperRef });
 
     return (
-        <section ref={wrapperRef} className="relative w-full h-screen overflow-hidden bg-gradz-charcoal">
+        <section ref={wrapperRef} className="relative w-full h-screen overflow-hidden bg-gradz-charcoal flex items-center justify-center">
             
-            {/* Backgrounds Layer */}
-            <div className="absolute inset-0 w-full h-full">
-                <div className="absolute inset-0 bg-gradz-charcoal z-40 opacity-40 mix-blend-multiply pointer-events-none"></div>
-                
-                {/* BG 1 - "Kindness is a muscle" -> Strong, Boxer/Focus */}
-                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&q=80&w=2000" 
-                     className="slide-bg-1 absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 z-0" 
-                     alt="Focus and Strength" />
-                
-                {/* BG 2 - "Use it or lose it" -> Intense Gym/Ropes */}
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=2000&auto=format&fit=crop&q=80" 
-                     className="slide-bg-2 absolute inset-0 w-full h-full object-cover z-10" 
-                     alt="Gym Intensity" />
-                
-                {/* BG 3 - "Empathy Gym" -> Community/Together */}
-                <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=2000" 
-                     className="slide-bg-3 absolute inset-0 w-full h-full object-cover z-20" 
-                     alt="Community Connection" />
-            </div>
+            {/* Subtle texture overlay for the charcoal background */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}></div>
 
-            {/* Text Layer */}
-            <div className="relative z-50 h-full flex items-center justify-center px-6 pointer-events-none">
-                <div className="max-w-5xl w-full text-center relative h-40 md:h-60"> 
+            {/* The "Cinema Frame" Container - Images are contained here instead of full screen */}
+            <div className="relative w-[90vw] md:w-[80vw] h-[60vh] md:h-[70vh] max-w-6xl bg-gradz-green rounded-[3rem] overflow-hidden border-4 border-gradz-cream/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
+                
+                {/* Dynamic Image Layer inside the frame */}
+                <div className="absolute inset-0 w-full h-full">
+                    <div className="absolute inset-0 bg-gradz-charcoal z-40 opacity-20 mix-blend-multiply pointer-events-none"></div>
                     
-                    {/* Slide 1 Text */}
-                    <div className="slide-text-1 absolute inset-0 flex flex-col items-center justify-center">
-                         <Badge text="The Core Belief" color="matcha" />
-                         <h2 className="text-5xl md:text-8xl font-serif text-gradz-cream mt-6 leading-tight drop-shadow-lg">
-                             Kindness is a <span className="italic text-gradz-matcha">muscle</span>.
-                         </h2>
-                    </div>
+                    {/* BG 1 */}
+                    <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&q=80&w=1600" 
+                         className="slide-bg-1 absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 z-0" 
+                         alt="Focus and Strength" />
+                    
+                    {/* BG 2 */}
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&auto=format&fit=crop&q=80" 
+                         className="slide-bg-2 absolute inset-0 w-full h-full object-cover z-10" 
+                         alt="Gym Intensity" />
+                    
+                    {/* BG 3 */}
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=1600" 
+                         className="slide-bg-3 absolute inset-0 w-full h-full object-cover z-20" 
+                         alt="Community Connection" />
+                </div>
 
-                    {/* Slide 2 Text */}
-                    <div className="slide-text-2 absolute inset-0 flex flex-col items-center justify-center opacity-0">
-                        <Badge text="The Problem" color="orange" />
-                        <h2 className="text-5xl md:text-8xl font-serif text-gradz-cream mt-6 leading-tight drop-shadow-lg">
-                            Use it or <span className="underline decoration-gradz-peach decoration-4 underline-offset-8">lose it</span>.
-                        </h2>
-                    </div>
+                {/* Tape Decoration on the frame */}
+                <Tape className="-top-4 left-1/2 -translate-x-1/2 rotate-90 opacity-80" />
+                <Tape className="bottom-10 -right-4 rotate-45 opacity-60" />
 
-                    {/* Slide 3 Text */}
-                    <div className="slide-text-3 absolute inset-0 flex flex-col items-center justify-center opacity-0">
-                         <Badge text="The Solution" color="blue" />
-                         <h2 className="text-5xl md:text-8xl font-serif text-gradz-cream mt-6 leading-tight drop-shadow-lg">
-                             Welcome to the <br/><span className="text-gradz-blue font-hand">Empathy Gym</span>.
-                         </h2>
-                    </div>
+                {/* Text Layer (Centered over the frame) */}
+                <div className="relative z-50 h-full flex items-center justify-center px-6 pointer-events-none bg-black/20 backdrop-blur-[2px]">
+                    <div className="max-w-4xl w-full text-center relative h-40 md:h-60"> 
+                        
+                        {/* Slide 1 Text */}
+                        <div className="slide-text-1 absolute inset-0 flex flex-col items-center justify-center">
+                             <Badge text="The Core Belief" color="matcha" />
+                             <h2 className="text-4xl md:text-7xl font-serif text-gradz-cream mt-6 leading-tight drop-shadow-lg">
+                                 Kindness is a <span className="italic text-gradz-matcha">muscle</span>.
+                             </h2>
+                        </div>
 
+                        {/* Slide 2 Text */}
+                        <div className="slide-text-2 absolute inset-0 flex flex-col items-center justify-center opacity-0">
+                            <Badge text="Action &gt; Sentiment" color="orange" />
+                            <h2 className="text-4xl md:text-7xl font-serif text-gradz-cream mt-6 leading-tight drop-shadow-lg">
+                                Use it or <span className="underline decoration-gradz-peach decoration-4 underline-offset-8">lose it</span>.
+                            </h2>
+                        </div>
+
+                        {/* Slide 3 Text */}
+                        <div className="slide-text-3 absolute inset-0 flex flex-col items-center justify-center opacity-0">
+                             <Badge text="The Solution" color="blue" />
+                             <h2 className="text-4xl md:text-7xl font-serif text-gradz-cream mt-6 leading-tight drop-shadow-lg">
+                                 Welcome to the <br/><span className="text-gradz-blue font-hand">Empathy Gym</span>.
+                             </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -430,7 +441,7 @@ const ViewMission = () => (
                 <p className="text-lg text-gradz-charcoal/80">Most "unkindness" is actually just distraction. We train you to lift your head up and actually see the humans around you.</p>
              </div>
              <div className="bg-white p-10 rounded-[3rem] border border-gradz-stone shadow-xl -rotate-1">
-                <h3 className="text-3xl font-serif text-gradz-green mb-4">2. Action > Sentiment</h3>
+                <h3 className="text-3xl font-serif text-gradz-green mb-4">2. Action &gt; Sentiment</h3>
                 <p className="text-lg text-gradz-charcoal/80">Feeling bad for someone does nothing. Feeling happy for someone does little. Doing something small changes everything.</p>
              </div>
              <div className="bg-white p-10 rounded-[3rem] border border-gradz-stone shadow-xl rotate-1">
@@ -515,7 +526,6 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const heroRef = useRef<HTMLDivElement>(null);
-  const heroBgRef = useRef<HTMLDivElement>(null);
   const xTo = useRef<any>(null);
   const yTo = useRef<any>(null);
 
@@ -536,13 +546,6 @@ function App() {
         }
     };
     window.addEventListener('mousemove', handleMouseMove);
-
-    // Hero background fade
-    gsap.to(heroBgRef.current, {
-        opacity: 1,
-        duration: 2,
-        ease: "power2.out"
-    });
 
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, { scope: heroRef });
@@ -630,29 +633,11 @@ function App() {
             {/* HERO SECTION */}
             <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-20 px-4 overflow-hidden">
               
-              {/* Dynamic Background Grid (More Images) */}
-              <div ref={heroBgRef} className="absolute inset-0 z-0 grid grid-cols-3 md:grid-cols-6 grid-rows-4 opacity-0 transition-opacity duration-1000 pointer-events-none">
-                   {[...Array(24)].map((_, i) => (
-                       <div key={i} className="relative overflow-hidden border-[0.5px] border-gradz-stone/20">
-                           {i % 3 === 0 && (
-                               <img 
-                                    src={`https://source.unsplash.com/random/400x400?nature,happy,peace&sig=${i}`} 
-                                    className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-luminosity hover:opacity-30 transition-opacity duration-700" 
-                                    alt="" 
-                                    loading="lazy"
-                                    onError={(e) => (e.currentTarget.style.display = 'none')}
-                               />
-                           )}
-                       </div>
-                   ))}
-              </div>
+              {/* --- NEW THREE.JS FLUID BACKGROUND --- */}
+              <FluidBackground />
 
-              <AbstractShape className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] md:w-[800px] md:h-[800px] text-gradz-matcha/20 animate-spin-slow -z-10 blur-3xl" />
-              
               <div className="container mx-auto relative z-10 flex flex-col items-center text-center">
                 
-                {/* REMOVED: The 2025 Protocol Badge */}
-
                 {/* Giant Typography */}
                 <div className="relative z-20 leading-[0.85] mb-12 select-none mix-blend-multiply mt-10">
                     <div className="hero-float relative">
