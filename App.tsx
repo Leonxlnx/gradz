@@ -430,7 +430,7 @@ const ViewMission = () => (
                 <p className="text-lg text-gradz-charcoal/80">Most "unkindness" is actually just distraction. We train you to lift your head up and actually see the humans around you.</p>
              </div>
              <div className="bg-white p-10 rounded-[3rem] border border-gradz-stone shadow-xl -rotate-1">
-                <h3 className="text-3xl font-serif text-gradz-green mb-4">2. Action > Sentiment</h3>
+                <h3 className="text-3xl font-serif text-gradz-green mb-4">2. Action &gt; Sentiment</h3>
                 <p className="text-lg text-gradz-charcoal/80">Feeling bad for someone does nothing. Feeling happy for someone does little. Doing something small changes everything.</p>
              </div>
              <div className="bg-white p-10 rounded-[3rem] border border-gradz-stone shadow-xl rotate-1">
