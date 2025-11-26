@@ -92,17 +92,19 @@
           scrollbar-width: none;  /* Firefox */
       }
     </style>
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
-    "three": "https://aistudiocdn.com/three@^0.181.2",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "gsap/": "https://aistudiocdn.com/gsap@^3.13.0/",
     "gsap": "https://aistudiocdn.com/gsap@^3.13.0",
-    "@gsap/react": "https://aistudiocdn.com/@gsap/react@^2.1.2"
+    "gsap/": "https://aistudiocdn.com/gsap@^3.13.0/",
+    "@gsap/react": "https://aistudiocdn.com/@gsap/react@^2.1.2",
+    "three": "https://aistudiocdn.com/three@^0.181.2",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
   }
 }
 </script>
@@ -110,5 +112,6 @@
   <body>
     <div class="bg-noise"></div>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
